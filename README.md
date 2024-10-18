@@ -89,15 +89,15 @@ We welcome contributions! If you'd like to contribute, please follow these steps
 1. Fork the repository.
 2. Create a branch:
    ```bash
-   git checkout -b feature/your-feature-name
+   git checkout -b feature/DÆTA
    ```
 3. Make your changes and commit them:
    ```bash
-   git commit -m 'Add feature: your-feature-name'
+   git commit -m 'Add feature: DÆTA'
    ```
 4. Push to the branch:
    ```bash
-   git push origin feature/your-feature-name
+   git push origin feature/DÆTA
    ```
 5. Open a pull request.
 
