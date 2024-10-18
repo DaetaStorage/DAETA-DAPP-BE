@@ -1,0 +1,41 @@
+{
+  "name": "daeta-be",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && node dist/server.js",
+    "dev": "nodemon server.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/file-manager": "^2.0.3",
+    "@types/multer": "^1.4.12",
+    "nodemon": "^3.1.4",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/config": "^3.3.5",
+    "@types/cors": "^2.8.17",
+    "@types/download": "^8.0.5",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/passport-jwt": "^4.0.1",
+    "axios": "^1.7.7",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "download": "^8.0.0",
+    "express": "^4.19.2",
+    "express-validator": "^7.2.0",
+    "file-manager": "^2.0.1",
+    "google-auth-library": "^9.14.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.6.1",
+    "multer": "^1.4.5-lts.1",
+    "passport-jwt": "^4.0.1"
+  }
+}
