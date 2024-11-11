@@ -15,7 +15,6 @@ const client = new OAuth2Client(clientJson.web);
 // Load Model
 import { User } from "../models/User";
 import { secretOrKey } from "../config/keys";
-import { WalletUser } from "../models/WalletUser";
 
 export const loginUser = async (req: Request, res: Response) => {
   const errors = validationResult(req);
@@ -31,6 +30,11 @@ export const loginUser = async (req: Request, res: Response) => {
     if (!user) {
       return res.status(400).json({ errors: [{ msg: "User not found" }] });
     }
+
+    if (!user.password)
+      return res
+        .status(400)
+        .json({ errors: [{ msg: "Password is not provided" }] });
 
     const isMatch = await bcrypt.compare(password, user.password);
 
@@ -93,6 +97,7 @@ export const loginWithGoogle = async (req: any, res: any) => {
         username,
         email,
         password: "daeta123",
+        loginWith: "google",
       });
     }
 
@@ -123,14 +128,15 @@ export const loginWithMetaMask = async (req: any, res: any) => {
       .json({ msg: "Bad request: Address doesn't exist!!!" });
 
   try {
-    let walletUser = await WalletUser.findOne({ address });
+    let user = await User.findOne({ wallet: address });
 
-    if (!walletUser) {
-      walletUser = await WalletUser.create({ address });
+    if (!user) {
+      user = await User.create({ wallet: address, loginWith: "wallet" });
     }
+
     const payload_ = {
       user: {
-        id: walletUser._id,
+        id: user._id,
       },
     };
     jwt.sign(payload_, secretOrKey, { expiresIn: 3600 }, (err, token) => {

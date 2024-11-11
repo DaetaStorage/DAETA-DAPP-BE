@@ -1,1 +1,1 @@
-export const secretOrKey = "daeta-key";
+export const secretOrKey = "storx-key";

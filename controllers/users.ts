@@ -29,6 +29,7 @@ export const registerUser = async (req: Request, res: Response) => {
       username,
       email,
       password: await bcrypt.hash(password, salt),
+      loginWith: "email",
     });
 
     const payload = {

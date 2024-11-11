@@ -5,7 +5,11 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
   email: {
     type: String,
-    required: true,
+    required: false,
+  },
+  wallet: {
+    type: String,
+    require: false,
   },
   username: {
     type: String,
@@ -32,7 +36,10 @@ const UserSchema = new Schema({
   },
   password: {
     type: String,
-    required: true,
+    required: false,
+  },
+  loginWith: {
+    type: String,
   },
   created_at: {
     type: Date,

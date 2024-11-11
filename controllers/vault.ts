@@ -26,15 +26,16 @@ export const createVault = async (req: any, res: Response) => {
 
   try {
     const salt = await bcrypt.genSalt(10);
+
+    const user = await User.findById(req.user.id);
+
+    if (!user) return res.status(404).json({ msg: "User not found" });
+
     const vault = await Vault.create({
       name,
       path: req.user.id,
       passcode: await bcrypt.hash(passcode, salt),
     });
-
-    const user = await User.findById(req.user.id);
-
-    if (!user) return res.status(404).json({ msg: "User not found" });
 
     user.vaults.unshift({ vault: vault._id });
 
